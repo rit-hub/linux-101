@@ -83,3 +83,25 @@ This document serves as a literal translation guide for Linux commands and shell
 * **`while` / `do` / `done`:** A loop that continues to run commands as long as a specific condition remains true.
 * **`case` / `esac`:** A switch statement that checks a variable against multiple possible matches. Closed with `esac` ("case" spelled backward).
 * **Exit Status (`$?`):** A hidden variable that holds a number representing whether the previous command succeeded (usually `0`) or failed (any number > `0`).
+
+## 9. Networking & Web Commands
+* **`ping` (Packet Internet Groper):** Acts like submarine sonar. It sends a tiny packet of data to a server to see if it responds and tells you how long the round-trip took.
+* **`curl` (Client URL):** A tool to transfer data to or from a server. Developers use this constantly to test REST APIs right from the terminal.
+* **`wget` (Web Get):** Downloads files from the web directly to your current directory. It’s great for grabbing installer files or zip archives from a server.
+* **`ssh` (Secure Shell):** Creates an encrypted connection to another Linux computer over the internet, allowing you to control it as if you were sitting right in front of it.
+* **`scp` (Secure Copy Protocol):** Uses the SSH protocol to securely copy files from your local machine to a remote server (or vice versa).
+* **`ss` (Socket Statistics):** Investigates network sockets. It shows you what ports are open on your machine and who is connecting to them (replaces the older `netstat` command).
+
+## 10. System Services & Background Jobs
+* **`systemctl` (System Control):** The command used to control `systemd`, which is the system and service manager for modern Linux. You use this to `start`, `stop`, `restart`, or `enable` background services (like a web server or database).
+* **`journalctl` (Journal Control):** Queries the logs collected by `systemd`. If a background service crashes, this is where you go to read the error logs.
+* **`cron` / `crontab` (Chronos Table):** Named after the Greek word for time. A time-based job scheduler. You edit the "crontab" to tell the system to run a specific script automatically at specific minutes, hours, or days.
+* **`nohup` (No Hang Up):** If you start a script and close your terminal window, the script stops. Running a command with `nohup` tells the system to ignore the "hang up" signal so the process keeps running in the background.
+
+## 11. Advanced Scripting Keywords
+* **`export`:** When you create a variable, it only exists in that specific script. `export` makes that variable an "Environment Variable," meaning any child process or script launched from there can also read it.
+* **`source` (or `.`):** Reads and executes commands from a file inside the *current* shell environment instead of starting a new one. Often used to reload configuration files like `source ~/.bashrc`.
+* **`read`:** Pauses the script and waits for the user to type something in, saving their input as a variable.
+* **`eval` (Evaluate):** Takes a string of text and forces the shell to execute it as if it were a typed command. Powerful, but dangerous if used with untrusted input.
+* **`trap`:** "Traps" system signals (like when a user presses `Ctrl+C` to kill a script). It allows you to run a cleanup function to delete temporary files before the script actually exits.
+* **`shift`:** Shifts the positional arguments (`$1`, `$2`, etc.) one step to the left. `$2` becomes `$1`, `$3` becomes `$2`. Used when parsing a long list of user arguments.
